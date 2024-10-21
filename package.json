@@ -2,7 +2,10 @@
   "name": "@angular-nx-store/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx",
+    "start:e-store": "nx serve frontend/e-store --port 4201 -o"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
