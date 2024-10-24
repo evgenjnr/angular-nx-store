@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/frontend/e-store/src",
-  "tags": ["scope:e-store"],
+  "tags": ["scope:e-store", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -64,7 +64,10 @@
           "buildTarget": "e-store:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/frontend/e-store/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

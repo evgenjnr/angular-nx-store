@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "admin",
   "sourceRoot": "apps/frontend/admin/src",
-  "tags": ["scope:admin"],
+  "tags": ["scope:admin", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -59,7 +59,10 @@
           "buildTarget": "admin:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/frontend/admin/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
