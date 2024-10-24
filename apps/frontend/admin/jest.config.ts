@@ -1,8 +1,8 @@
 export default {
-  displayName: 'e-store',
+  displayName: 'admin',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/apps/frontend/e-store',
+  coverageDirectory: '../../../coverage/apps/frontend/admin',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

@@ -1,34 +1,29 @@
 {
-  "name": "e-store",
+  "name": "admin",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
-  "sourceRoot": "apps/frontend/e-store/src",
-  "tags": ["scope:e-store"],
+  "prefix": "admin",
+  "sourceRoot": "apps/frontend/admin/src",
+  "tags": ["scope:admin"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/frontend/e-store",
-        "index": "apps/frontend/e-store/src/index.html",
-        "browser": "apps/frontend/e-store/src/main.ts",
+        "outputPath": "dist/apps/frontend/admin",
+        "index": "apps/frontend/admin/src/index.html",
+        "browser": "apps/frontend/admin/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/frontend/e-store/tsconfig.app.json",
+        "tsConfig": "apps/frontend/admin/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/frontend/e-store/public"
+            "input": "apps/frontend/admin/public"
           }
         ],
-        "styles": ["apps/frontend/e-store/src/styles.scss"],
-        "scripts": [],
-        "server": "apps/frontend/e-store/src/main.server.ts",
-        "prerender": true,
-        "ssr": {
-          "entry": "apps/frontend/e-store/server.ts"
-        }
+        "styles": ["apps/frontend/admin/src/styles.scss"],
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -58,10 +53,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "e-store:build:production"
+          "buildTarget": "admin:build:production"
         },
         "development": {
-          "buildTarget": "e-store:build:development"
+          "buildTarget": "admin:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -69,7 +64,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "e-store:build"
+        "buildTarget": "admin:build"
       }
     },
     "lint": {
@@ -79,15 +74,15 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/frontend/e-store/jest.config.ts"
+        "jestConfig": "apps/frontend/admin/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "e-store:build",
-        "port": 4201,
-        "staticFilePath": "dist/apps/frontend/e-store/browser",
+        "buildTarget": "admin:build",
+        "port": 4202,
+        "staticFilePath": "dist/apps/frontend/admin/browser",
         "spa": true
       }
     }
