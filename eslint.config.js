@@ -24,6 +24,10 @@ module.exports = [
               sourceTag: 'scope:admin',
               onlyDependOnLibsWithTags: ['scope:admin'],
             },
+            {
+              sourceTag: 'scope:backend-api',
+              onlyDependOnLibsWithTags: ['*'],
+            },
           ],
         },
       ],
