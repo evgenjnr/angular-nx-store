@@ -8,6 +8,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { DataSource } from 'typeorm';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver } from '@nestjs/apollo';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
@@ -37,9 +40,15 @@ import { DataSource } from 'typeorm';
       },
       inject: [ConfigService],
     }),
+    GraphQLModule.forRoot({
+      driver: ApolloDriver,
+      typePaths: ['./**/*.graphql'],
+      context: ({ req }) => ({ req }),
+      playground: true,
+    }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppResolver],
 })
 export class AppModule {
   constructor(private readonly db: DataSource) {
