@@ -6,8 +6,14 @@
     "nx": "nx",
     "start:e-store": "nx serve e-store --port 4201 -o",
     "start:admin": "nx serve admin --port 4202 -o",
-    "start:db": "docker-compose up -d",
-    "stop:db": "docker-compose stop"
+    "start:api:dev": "nx serve api --configuration=development --skip-nx-cache",
+    "start:db": "cd ./apps/backend/api && docker compose --env-file .env up -d",
+    "stop:db": "cd ./apps/backend/api &&  docker-compose stop",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "typeorm:run-migrations": "yarn run typeorm migration:run -d ./apps/backend/api/typeOrm.config.ts",
+    "typeorm:generate-migration": "yarn run typeorm -- -d ./apps/backend/api/typeorm.config.ts migration:generate ./apps/backend/api/migrations/${0} --verbose",
+    "typeorm:create-migration": "yarn run typeorm migration:create ./apps/backend/api/migrations/${0}",
+    "typeorm:revert-migration": "yarn run typeorm -- -d ./apps/backend/api/typeorm.config.ts migration:revert"
   },
   "private": true,
   "dependencies": {
@@ -22,13 +28,21 @@
     "@angular/router": "~18.2.0",
     "@angular/ssr": "~18.2.0",
     "@nestjs/common": "^10.0.2",
+    "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.2",
+    "@nestjs/graphql": "^12.2.2",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.2",
+    "@nestjs/typeorm": "^10.0.2",
+    "apollo-server-express": "^3.13.0",
     "axios": "^1.6.0",
     "express": "~4.18.2",
+    "graphql": "^16.10.0",
+    "graphql-tools": "^9.0.11",
+    "pg": "^8.13.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
+    "typeorm": "^0.3.20",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -77,5 +91,6 @@
     "typescript": "~5.5.2",
     "typescript-eslint": "^8.0.0",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }
