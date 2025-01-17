@@ -6,20 +6,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { DataSource } from 'typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import { AppResolver } from './app.resolver';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    UserModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        console.log(__dirname);
+        // console.log(__dirname);
         return {
           type: 'postgres' as 'aurora-mysql',
           host: configService.get('DB_HOST'),
@@ -46,12 +46,14 @@ import { AppResolver } from './app.resolver';
       context: ({ req }) => ({ req }),
       playground: true,
     }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
 })
 export class AppModule {
   constructor(private readonly db: DataSource) {
-    console.log({ DB: this.db.options });
+    // console.log({ DB: this.db.options });
   }
 }

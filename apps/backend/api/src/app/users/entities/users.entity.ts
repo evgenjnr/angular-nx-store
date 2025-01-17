@@ -1,28 +1,27 @@
 import {
+  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
   UpdateDateColumn,
+  Entity,
 } from 'typeorm';
-import 'reflect-metadata';
 
 @Entity()
-export class User {
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
-  name: string;
-  @Column()
+  @Column({ nullable: true })
+  userName: string;
+  @Column({ nullable: true })
   surname: string;
   @Column()
   email: string;
   @Column()
   password: string;
-  @Column()
+  @Column({ nullable: true })
   phone: string;
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: string;
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt: string;
 }
