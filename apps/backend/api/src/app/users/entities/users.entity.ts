@@ -5,12 +5,13 @@ import {
   UpdateDateColumn,
   Entity,
 } from 'typeorm';
+import { UserRole } from '../models/user-roles.type';
 
 @Entity()
 export class Users {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ nullable: true })
+  @Column({ nullable: true, unique: true })
   userName: string;
   @Column({ nullable: true })
   surname: string;
@@ -18,6 +19,12 @@ export class Users {
   email: string;
   @Column()
   password: string;
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    default: UserRole.USER,
+  })
+  role: UserRole;
   @Column({ nullable: true })
   phone: string;
   @CreateDateColumn()

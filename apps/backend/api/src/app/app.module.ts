@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 import { DataSource } from 'typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
-import { AppResolver } from './app.resolver';
+// import { AppResolver } from './app.resolver';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
@@ -50,10 +50,10 @@ import { UsersModule } from './users/users.module';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AppResolver],
+  providers: [AppService],
 })
 export class AppModule {
   constructor(private readonly db: DataSource) {
-    // console.log({ DB: this.db.options });
+    // console.log({ DB: this.db.options });AppResolver
   }
 }

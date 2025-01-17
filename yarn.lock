@@ -432,6 +432,7 @@ __metadata:
     express: "npm:~4.18.2"
     graphql: "npm:^16.10.0"
     graphql-tools: "npm:^9.0.11"
+    graphql-type-json: "npm:^0.3.2"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jest-environment-node: "npm:^29.7.0"
@@ -11672,6 +11673,15 @@ __metadata:
     "@apollo/client":
       optional: true
   checksum: 10c0/4f2558d58dc560b2c8fa6cc4813fa288b9920b355b68a3237433f94774381668aa6ceecf6ea57f260b6b106cb14a9647e53afd9c39ef04233ed0a385093c3a18
+  languageName: node
+  linkType: hard
+
+"graphql-type-json@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "graphql-type-json@npm:0.3.2"
+  peerDependencies:
+    graphql: ">=0.8.0"
+  checksum: 10c0/1ee7efff7f451cf2db6844430f4b19f8915175af11c1eeca31c8972685194669199cc542060d15cc9e169bb4d5a3cd16a6cf99081b9d802d8470048022a2924a
   languageName: node
   linkType: hard
 
